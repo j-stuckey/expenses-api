@@ -3,7 +3,10 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const helmet = require('helmet'); // https://helmetjs.github.io/docs/
 
+
+// CONSTANTS
 const { PORT } = require('./config');
 
 const app = express();
@@ -12,6 +15,7 @@ const app = express();
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'common': 'dev'));
 
 app.use(express.json());
+app.use(helmet());
 
 app.get('/status', (req, res, next) => {
     res.send('<h1>Server up and running!</h1>');

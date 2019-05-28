@@ -3,6 +3,7 @@ services:
   server:
     build: .
     image: expenses-api
+    container_name: expenses_api
     command: npm start
     ports:
       - '8080:8080'
